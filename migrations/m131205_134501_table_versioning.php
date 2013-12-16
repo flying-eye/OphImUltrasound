@@ -110,12 +110,9 @@ CREATE TABLE `ophimultrasound_request_priority_version` (
 	public function down()
 	{
 		$this->dropColumn('ophimultrasound_request_priority','deleted');
-		$this->dropColumn('ophimultrasound_request_priority_version','deleted');
 
 		$this->dropColumn('et_ophimultrasound_report','deleted');
-		$this->dropColumn('et_ophimultrasound_report_version','deleted');
 		$this->dropColumn('et_ophimultrasound_request','deleted');
-		$this->dropColumn('et_ophimultrasound_request_version','deleted');
 
 		$this->dropTable('et_ophimultrasound_report_version');
 		$this->dropTable('et_ophimultrasound_request_version');
