@@ -32,7 +32,7 @@
  * @property User $usermodified
  */
 
-class Element_OphImUltrasound_Request_Priority extends BaseActiveRecord
+class Element_OphImUltrasound_Request_Priority extends BaseActiveRecordVersioned
 {
 	/**
 	 * Returns the static model of the specified AR class.
