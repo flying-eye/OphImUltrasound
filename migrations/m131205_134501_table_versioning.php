@@ -8,7 +8,7 @@ class m131205_134501_table_versioning extends CDbMigration
 CREATE TABLE `et_ophimultrasound_report_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`report` text COLLATE utf8_bin,
+	`report` text,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -20,7 +20,7 @@ CREATE TABLE `et_ophimultrasound_report_version` (
 	CONSTRAINT `acv_et_ophimultrasound_report_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophimultrasound_report_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophimultrasound_report_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophimultrasound_report_version','id','int(10) unsigned NOT NULL');
@@ -40,7 +40,7 @@ CREATE TABLE `et_ophimultrasound_request_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
 	`priority_id` int(10) unsigned NOT NULL DEFAULT '1',
-	`indication` text COLLATE utf8_bin,
+	`indication` text,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -54,7 +54,7 @@ CREATE TABLE `et_ophimultrasound_request_version` (
 	CONSTRAINT `acv_et_ophimultrasound_request_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophimultrasound_request_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_ophimultrasound_request_priority_fk` FOREIGN KEY (`priority_id`) REFERENCES `ophimultrasound_request_priority` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophimultrasound_request_version','id','int(10) unsigned NOT NULL');
@@ -72,7 +72,7 @@ CREATE TABLE `et_ophimultrasound_request_version` (
 		$this->execute("
 CREATE TABLE `ophimultrasound_request_priority_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -83,7 +83,7 @@ CREATE TABLE `ophimultrasound_request_priority_version` (
 	KEY `acv_ophimultrasound_request_priority_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_ophimultrasound_request_priority_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophimultrasound_request_priority_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophimultrasound_request_priority_version','id','int(10) unsigned NOT NULL');
