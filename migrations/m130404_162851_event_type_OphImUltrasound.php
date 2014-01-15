@@ -31,7 +31,7 @@ class m130404_162851_event_type_OphImUltrasound extends CDbMigration
 		// element lookup table ophimultrasound_request_priority
 		$this->createTable('ophimultrasound_request_priority', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -42,7 +42,7 @@ class m130404_162851_event_type_OphImUltrasound extends CDbMigration
 				'KEY `ophimultrasound_request_priority_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `ophimultrasound_request_priority_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophimultrasound_request_priority_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophimultrasound_request_priority',array('name'=>'Routine','display_order'=>1));
 		$this->insert('ophimultrasound_request_priority',array('name'=>'Soon','display_order'=>2));
@@ -69,7 +69,7 @@ class m130404_162851_event_type_OphImUltrasound extends CDbMigration
 				'CONSTRAINT `et_ophimultrasound_request_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophimultrasound_request_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
 				'CONSTRAINT `ophimultrasound_request_priority_fk` FOREIGN KEY (`priority_id`) REFERENCES `ophimultrasound_request_priority` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 
 
@@ -89,7 +89,7 @@ class m130404_162851_event_type_OphImUltrasound extends CDbMigration
 				'CONSTRAINT `et_ophimultrasound_report_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophimultrasound_report_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophimultrasound_report_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 	}
 
