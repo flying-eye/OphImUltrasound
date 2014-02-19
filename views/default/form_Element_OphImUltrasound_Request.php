@@ -25,6 +25,6 @@
 	data-element-display-order="<?php echo $element->elementType->display_order?>">
 	<h4 class="elementTypeName"><?php echo $element->elementType->name; ?></h4>
 
-	<?php echo $form->dropDownList($element, 'priority_id', CHtml::listData(Element_OphImUltrasound_Request_Priority::model()->findAll(array('order'=> 'display_order asc')),'id','name'))?>
+	<?php echo $form->dropDownList($element, 'priority_id', CHtml::listData(Element_OphImUltrasound_Request_Priority::model()->notDeletedOrPk($element->priority_id)->findAll(array('order'=> 'display_order asc')),'id','name'))?>
 	<?php echo $form->textArea($element, 'indication', array('rows' => 4, 'cols' => 80))?>
 </div>
